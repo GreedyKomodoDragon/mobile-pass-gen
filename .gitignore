@@ -99,3 +99,6 @@ Backup[ ]of[ ]*.numbers/
 
 # Cocoapods
 Pods/
+
+# Secrets
+Secrets.ts

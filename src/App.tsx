@@ -1,8 +1,8 @@
 import React from 'react';
-import {useColorScheme} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import { useColorScheme } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 import SplashScreen from 'react-native-splash-screen'
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Main from './components/main';
 import PasswordStrength from './components/PasswordStrength';
@@ -17,6 +17,9 @@ const App = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const navTheme = DefaultTheme;
+  navTheme.colors.background = 'white';
+
   React.useEffect(() => {
 
     // For now is a place holder for code
@@ -27,9 +30,12 @@ const App = () => {
   }, [])
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Main}/>
+    <NavigationContainer
+      theme={navTheme}>
+      <Stack.Navigator
+        screenOptions={{ headerShown: false, }}
+      >
+        <Stack.Screen name="Home" component={Main} />
         <Stack.Screen name="Strength" component={PasswordStrength} />
         <Stack.Screen name="Generator" component={PasswordGenerator} />
       </Stack.Navigator>
