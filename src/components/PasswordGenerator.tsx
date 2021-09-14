@@ -6,6 +6,7 @@ import axios from 'axios';
 import Clipboard from '@react-native-clipboard/clipboard';
 import Dialog, { DialogContent } from 'react-native-popup-dialog';
 import hostname from "../../secrets";
+import BackButton from "./BackButton";
 
 const styles = StyleSheet.create({
     main: {
@@ -39,9 +40,6 @@ const styles = StyleSheet.create({
         paddingTop: 30,
         flexDirection: 'row',
         alignItems: 'center'
-    },
-    backButton: {
-        backgroundColor: "red"
     }
 });
 
@@ -198,14 +196,7 @@ const PasswordGenerator: React.FC<genProps> = (props: genProps) => {
                     :
                     null
             }
-            <View style={{ paddingTop: 20, width: "30%" }}>
-                <Button
-                    titleStyle={styles.buttonTitle}
-                    title={"Back"}
-                    icon={{ name: 'back', type: 'antdesign', size: 30, color: "white" }}
-                    buttonStyle={styles.backButton}
-                    onPress={() => { props.navigation.navigate('Home') }} />
-            </View>
+           <BackButton navigation={props.navigation} />
         </View>
     );
 };

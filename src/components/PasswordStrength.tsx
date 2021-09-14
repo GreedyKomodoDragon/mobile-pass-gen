@@ -4,6 +4,7 @@ import { Button, Input } from "react-native-elements";
 import axios from 'axios';
 import hostname from "../../secrets";
 import { Pie } from "react-native-progress";
+import BackButton from "./BackButton";
 
 const styles = StyleSheet.create({
     main: {
@@ -40,8 +41,11 @@ const styles = StyleSheet.create({
     },
 });
 
+interface strengthProp {
+    navigation: any;
+}
 
-const PasswordStrength: React.FC = () => {
+const PasswordStrength: React.FC<strengthProp> = (props: strengthProp) => {
 
     const [password, setPassword] = useState<string>("");
     const [error, setError] = useState<string>();
@@ -136,6 +140,7 @@ const PasswordStrength: React.FC = () => {
                     </View>
                     : null
             }
+            <BackButton navigation={props.navigation} />
 
         </View>
     );
